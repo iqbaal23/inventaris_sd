@@ -4,7 +4,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.13
     </div>
-    <strong>Copyright &copy; 2019 <a href="<?php echo base_url() ?>assets/adminlte/https://adminlte.io">KKN UIN SUSKA '43	</a>.</strong> All rights
+    <strong>Copyright &copy; 2019 <a href="https://github.com/iqbaal23/inventaris_sd">KKN UIN SUSKA '43	</a>.</strong> All rights
     reserved.
   </footer>
 
