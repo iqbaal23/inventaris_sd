@@ -15,6 +15,7 @@
 			$this->load->model('Model_buku'); 
 			$this->load->model('Model_sumberdana'); 
 			$this->load->model('Model_jenisbuku'); 
+			$this->load->model('Model_kelas'); 
 		}
 
 		function index()
@@ -23,6 +24,7 @@
 			$data['buku'] = $this->Model_buku->getAllBuku();
 			$data['sumberdana'] = $this->Model_sumberdana->getAllSumberDana();
 			$data['jenisbuku'] = $this->Model_jenisbuku->getAllJenisBuku();
+			$data['kelas'] = $this->Model_kelas->getAllKelas();
 			$this->load->view('templates/header', $data);
 			$this->load->view('buku/index', $data);
 			$this->load->view('templates/footer');

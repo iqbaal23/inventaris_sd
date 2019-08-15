@@ -122,6 +122,19 @@
 				<li
 				<?php
 				
+					if(uri_string() == "kelas"){
+						echo 'class="active"';
+					}
+				
+				?>
+				>
+					<a href="<?php echo base_url() ?>kelas">
+            <i class="fa fa-building"></i> <span>Kelas</span>
+          </a>
+				</li>
+				<li
+				<?php
+				
 					if(uri_string() == "buku" || uri_string() == ""){
 						echo 'class="active"';
 					}

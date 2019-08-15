@@ -23,6 +23,8 @@
 				<th>Tahun</th>
 				<th>Jenis Buku</th>
 				<th>Sumber Dana</th>
+				<th>Kelas</th>
+				<th>Jumlah</th>
 				<th>Action</th>
 			</tr>
 			</thead>
@@ -38,12 +40,18 @@
 					if($sumberDana == null){
 						$sumberDana[0]['nama_sumber_dana'] = "";
 					}
+					$kelas_relasi = $this->Model_kelas->getWhere($bk['id_kelas']);
+					if($kelas_relasi == null){
+						$kelas_relasi[0]['nama_kelas'] = "";
+					}
 					echo "<tr>
 							<td>".$i++."</td>
 							<td>".$bk['nama_buku']."</td>
 							<td>".$bk['tahun']."</td>
 							<td>".$jenisBuku[0]['nama_jenis_buku']."</td>
 							<td>".$sumberDana[0]['nama_sumber_dana']."</td>
+							<td>".$kelas_relasi[0]['nama_kelas']."</td>
+							<td>".$bk['jumlah_buku']."</td>
 							<td><a class='btn-sm btn-primary' data-toggle='modal' data-target='#modal-update-".$bk['id_buku']."'>
 									<i class='fa fa-edit'></i>
 								</a>
@@ -62,6 +70,8 @@
 				<th>Tahun</th>
 				<th>Jenis Buku</th>
 				<th>Sumber Dana</th>
+				<th>Kelas</th>
+				<th>Jumlah</th>
 				<th>Action</th>
 			</tr>
 			</tfoot>
@@ -115,6 +125,23 @@
 									
 									?>
 								</select>
+							</div>
+							<div class="form-group">
+								<label for="kelas">Kelas</label>
+								<select name="kelas" id="kelas" class="form-control">
+									<option selected disabled>--Pilih Kelas--</option>
+									<?php
+									
+										foreach($kelas as $kls){
+											echo '<option value="'.$kls["id_kelas"].'">'.$kls["nama_kelas"].'</option>';
+										}
+									
+									?>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="jumlah">Jumlah</label>
+								<input type="number" min="0" class="form-control" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah Buku">
 							</div>
 						</div>
 					</div>
@@ -181,6 +208,7 @@
 									?>
 								</select>
 							</div>
+							
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -253,6 +281,26 @@
 										
 										?>
 									</select>
+								</div>
+								<div class="form-group">
+									<label for="tahun">Kelas</label>
+									<select name="kelas" id="kelas" class="form-control">
+										<option selected disabled>--Pilih Kelas--</option>
+										<?php
+											foreach($kelas as $kls){
+												$selected = '';
+												if($kls['id_kelas'] == $bk['id_kelas']){
+													$selected = 'selected';
+												}
+												echo '<option '.$selected.' value="'.$kls["id_kelas"].'">'.$kls["nama_kelas"].'</option>';
+											}
+										
+										?>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="jumlah">Jumlah</label>
+									<input type="number" min="0" class="form-control" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah Buku" value="<?= $bk['jumlah_buku'] ?>">
 								</div>
 							</div>
 						</div>

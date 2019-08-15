@@ -34,7 +34,9 @@
 				'nama_buku' => $this->input->post('judulBuku', true),
 				'tahun' => $this->input->post('tahun', true),
 				'id_jenis_buku' => $this->input->post('jenisbuku', true),
-				'id_sumber_dana' => $this->input->post('sumberdana', true)
+				'id_sumber_dana' => $this->input->post('sumberdana', true),
+				'id_kelas' => $this->input->post('kelas', true),
+				'jumlah_buku' => $this->input->post('jumlah', true)
 			];
 
 			$this->db->insert('buku', $data);
@@ -46,7 +48,9 @@
 				'nama_buku' => $this->input->post('judulBuku', true),
 				'tahun' => $this->input->post('tahun', true),
 				'id_jenis_buku' => $this->input->post('jenisbuku', true),
-				'id_sumber_dana' => $this->input->post('sumberdana', true)
+				'id_sumber_dana' => $this->input->post('sumberdana', true),
+				'id_kelas' => $this->input->post('kelas', true),
+				'jumlah_buku' => $this->input->post('jumlah', true)
 			];
 
 			$id_buku = $this->input->post('idBuku', true);
