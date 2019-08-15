@@ -16,7 +16,7 @@
 			<thead>
 			<tr>
 				<th>No</th>
-				<th>Judul Buku</th>
+				<th>Jenis Buku</th>
 				<th>Action</th>
 			</tr>
 			</thead>
@@ -41,7 +41,7 @@
 			<tfoot>
 			<tr>
 				<th>No</th>
-				<th>Judul Buku</th>
+				<th>Jenis Buku</th>
 				<th>Action</th>
 			</tr>
 			</tfoot>
@@ -62,8 +62,8 @@
 					<div class="modal-body">
 						<div class="box-body">
 							<div class="form-group">
-								<label for="judulBuku">Judul Buku</label>
-								<input type="text" class="form-control" name="jenisBuku" id="jenisBuku" placeholder="Masukkan Judul Buku">
+								<label for="judulBuku">Jenis Buku</label>
+								<input type="text" class="form-control" name="jenisBuku" id="jenisBuku" placeholder="Masukkan Jenis Buku">
 							</div>
 						</div>
 					</div>
@@ -96,8 +96,8 @@
 							<div class="box-body">
 								<input type="hidden" class="form-control" name="idJenisBuku" id="idJenisBuku" value="<?= $bk['id_jenis_buku'] ?>" readonly>
 								<div class="form-group">
-									<label for="jenisBuku">Judul Buku</label>
-									<input type="text" class="form-control" name="jenisBuku" id="jenisBuku" placeholder="Masukkan Judul Buku" value="<?= $bk['nama_jenis_buku'] ?>">
+									<label for="jenisBuku">Jenis Buku</label>
+									<input type="text" class="form-control" name="jenisBuku" id="jenisBuku" placeholder="Masukkan Jenis Buku" value="<?= $bk['nama_jenis_buku'] ?>">
 								</div>
 							</div>
 						</div>
