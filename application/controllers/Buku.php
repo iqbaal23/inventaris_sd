@@ -67,7 +67,7 @@
 		{
 			if(isset($_POST['export'])){
 				// $buku = $this->Model_buku->getAllBuku();
-				$buku = $this->Model_buku->getExport($_POST['tahun'], $_POST['jenisbuku'], $_POST['sumberdana']);
+				$buku = $this->Model_buku->getExport($_POST['tahun'], $_POST['jenisbuku'], $_POST['sumberdana'], $_POST['kelas']);
 				// $sumberdana = $this->Model_sumberdana->getAllSumberDana();
 				// $jenisbuku = $this->Model_jenisbuku->getAllJenisBuku();
 				// Create new Spreadsheet object
@@ -88,6 +88,8 @@
 				$spreadsheet->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
 				$spreadsheet->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
 				$spreadsheet->getActiveSheet()->getColumnDimension('E')->setAutoSize(true);
+				$spreadsheet->getActiveSheet()->getColumnDimension('F')->setAutoSize(true);
+				$spreadsheet->getActiveSheet()->getColumnDimension('G')->setAutoSize(true);
 
 				// Add some data
 				$spreadsheet->setActiveSheetIndex(0)
@@ -96,6 +98,8 @@
 				->setCellValue('C1', 'TAHUN')
 				->setCellValue('D1', 'JENIS BUKU')
 				->setCellValue('E1', 'SUMBER DANA')
+				->setCellValue('F1', 'KELAS')
+				->setCellValue('G1', 'JUMLAH')
 				;
 
 				// Miscellaneous glyphs, UTF-8
@@ -103,14 +107,26 @@
 				$no=1;
 				foreach($buku as $buku) {
 					$jenisBuku = $this->Model_jenisbuku->getWhere($buku['id_jenis_buku']);
+					if($jenisBuku == null){
+						$jenisBuku[0]['nama_jenis_buku'] = "";
+					}
 					$sumberDana = $this->Model_sumberdana->getWhere($buku['id_sumber_dana']);
+					if($sumberDana == null){
+						$sumberDana[0]['nama_sumber_dana'] = "";
+					}
+					$kelas_relasi = $this->Model_kelas->getWhere($buku['id_kelas']);
+					if($kelas_relasi == null){
+						$kelas_relasi[0]['nama_kelas'] = "";
+					}
 
 					$spreadsheet->setActiveSheetIndex(0)
 					->setCellValue('A'.$i, $no)
 					->setCellValue('B'.$i, $buku['nama_buku'])
 					->setCellValue('C'.$i, $buku['tahun'])
 					->setCellValue('D'.$i, $jenisBuku[0]['nama_jenis_buku'])
-					->setCellValue('E'.$i, $sumberDana[0]['nama_sumber_dana']);
+					->setCellValue('E'.$i, $sumberDana[0]['nama_sumber_dana'])
+					->setCellValue('F'.$i, $kelas_relasi[0]['nama_kelas'])
+					->setCellValue('G'.$i, $buku['jumlah_buku']);
 					$i++;
 					$no++;
 				}

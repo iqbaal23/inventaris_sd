@@ -196,13 +196,26 @@
 								</select>
 							</div>
 							<div class="form-group">
-								<label for="tahun">Sumber Dana</label>
+								<label for="sumberdana">Sumber Dana</label>
 								<select name="sumberdana" id="sumberdana" class="form-control">
 									<option value="semua">--Semua--</option>
 									<?php
 									
 										foreach($sumberdana as $sd){
 											echo '<option value="'.$sd["id_sumber_dana"].'">'.$sd["nama_sumber_dana"].'</option>';
+										}
+									
+									?>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="kelas">Kelas</label>
+								<select name="kelas" id="kelas" class="form-control">
+									<option value="semua">--Semua--</option>
+									<?php
+									
+										foreach($kelas as $kls){
+											echo '<option value="'.$kls["id_kelas"].'">'.$kls["nama_kelas"].'</option>';
 										}
 									
 									?>

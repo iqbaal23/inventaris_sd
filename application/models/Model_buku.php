@@ -11,7 +11,7 @@
 			return $this->db->distinct()->select('tahun')->order_by('tahun')->get('buku')->result_array();
 		}
 
-		public function getExport($tahun, $id_jenis_buku, $id_sumber_dana)
+		public function getExport($tahun, $id_jenis_buku, $id_sumber_dana, $id_kelas)
 		{
 			$this->db->select('*');
 			$this->db->from('buku');
@@ -23,6 +23,9 @@
 			}
 			if($id_sumber_dana != 'semua'){
 				$this->db->where('id_sumber_dana', $id_sumber_dana);
+			}
+			if($id_kelas != 'semua'){
+				$this->db->where('id_kelas', $id_kelas);
 			}
 
 			return $this->db->get()->result_array();
