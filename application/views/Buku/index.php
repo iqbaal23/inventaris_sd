@@ -31,7 +31,13 @@
 				$i=1;
 				foreach($buku as $bk){
 					$jenisBuku = $this->Model_jenisbuku->getWhere($bk['id_jenis_buku']);
+					if($jenisBuku == null){
+						$jenisBuku[0]['nama_jenis_buku'] = "";
+					}
 					$sumberDana = $this->Model_sumberdana->getWhere($bk['id_sumber_dana']);
+					if($sumberDana == null){
+						$sumberDana[0]['nama_sumber_dana'] = "";
+					}
 					echo "<tr>
 							<td>".$i++."</td>
 							<td>".$bk['nama_buku']."</td>
